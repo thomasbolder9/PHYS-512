@@ -1,8 +1,8 @@
-PWD /Users/thomasbolder/Documents/mcgill/f_2025/physics_512/lectures/notes
+PWD /Users/thomasbolder/Documents/mcgill/f_2025/physics_512/lectures/lec2
 INPUT /usr/local/texlive/2022/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2022/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/thomasbolder/Documents/mcgill/f_2025/physics_512/lectures/notes/lec2.tex
+INPUT /Users/thomasbolder/Documents/mcgill/f_2025/physics_512/lectures/lec2/lec2.tex
 OUTPUT lec2.log
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls

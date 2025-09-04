@@ -1,10 +1,10 @@
-name: Build LaTeX PDF
+name: Build all LaTeX PDFs
 
 on:
   push:
     paths:
-      - 'documentation/**'  
-  workflow_dispatch: 
+      - '**/*.tex'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -14,13 +14,22 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v3
 
-    - name: Set up LaTeX
-      uses: xu-cheng/latex-action@v2
-      with:
-        root_file: documentation/main.tex    
+    - name: Build PDFs for all .tex files
+      run: |
+        mkdir -p built_pdfs
+        tex_files=$(find . -name '*.tex')
+        for texfile in $tex_files; do
+          dir=$(dirname "$texfile")
+          base=$(basename "$texfile" .tex)
+          pushd "$dir"
+          pdflatex -interaction=nonstopmode "$base.tex"
+          pdflatex -interaction=nonstopmode "$base.tex"
+          mv "$base.pdf" ../../built_pdfs/"${dir//\//_}__$base.pdf"
+          popd
+        done
 
-    - name: Upload PDF
+    - name: Upload PDFs
       uses: actions/upload-artifact@v4
       with:
-        name: PDF
-        path: documentation/main.pdf
+        name: PDFs
+        path: built_pdfs/*.pdf
